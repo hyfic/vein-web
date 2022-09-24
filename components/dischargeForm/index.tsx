@@ -4,6 +4,7 @@ import { defaultDischargeData } from '@/utils/constants';
 import React, { createContext, useState } from 'react';
 import { BioData } from './bioData';
 import { DischargeHeader } from './dischargeHeader';
+import { DischargeSummaryForm } from './dischargeSummaryForm';
 
 export interface DischargeFromContextType {
   dischargeData: Discharge;
@@ -21,6 +22,7 @@ export const DischargeForm: React.FC = () => {
     <DischargeFormContext.Provider value={{ dischargeData, setDischargeData }}>
       <DischargeHeader />
       <BioData />
+      <DischargeSummaryForm />
     </DischargeFormContext.Provider>
   );
 };
