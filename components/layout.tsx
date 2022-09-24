@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { ReactComponent } from '@/types/react';
 import { Container } from '@chakra-ui/react';
 import { Header } from './header';
+import { Footer } from './footer';
 
 export const Layout: ReactComponent = ({ children }) => {
   return (
@@ -40,6 +41,7 @@ export const Layout: ReactComponent = ({ children }) => {
       <Container maxW='container.xl'>
         <Header />
         {children}
+        <Footer />
       </Container>
     </div>
   );
