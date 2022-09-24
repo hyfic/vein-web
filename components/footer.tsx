@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <Flex mt={3} mb={10} direction='column'>
+    <Flex mt={8} mb={10} direction='column'>
       <Divider my={5} />
       <Text className='opacity-40 text-sm'>Powered by</Text>
       <Link href='https://hyfic.github.io' target='_blank'>

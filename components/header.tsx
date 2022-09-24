@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Flex mt={8} alignItems='center' justifyContent='space-between'>
+    <Flex mt={8} mb={8} alignItems='center' justifyContent='space-between'>
       <Flex alignItems='center'>
         <img
           src='https://raw.githubusercontent.com/octoi/heartbeat/main/website/assets/logo.svg'

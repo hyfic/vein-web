@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import React from 'react';
 import { Button, useColorMode } from '@chakra-ui/react';
-import { Layout } from '../components/layout';
+import { Layout } from '@/components/layout';
 
 const HomePage: NextPage = () => {
   const { toggleColorMode } = useColorMode();
