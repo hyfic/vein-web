@@ -32,7 +32,28 @@ export const DischargeSummaryForm: React.FC = () => {
     dischargeData.dischargeSummary?.summaryValues || {}
   );
 
-  useEffect(() => {}, [summaryValues]);
+  useEffect(() => {
+    setDischargeData({
+      ...dischargeData,
+      dischargeSummary: {
+        patientAllergicTo,
+        mlc: mlc as 'Yes' | 'No',
+        department,
+        admission,
+        discharge,
+        surgery,
+        summaryValues,
+      },
+    });
+  }, [
+    patientAllergicTo,
+    mlc,
+    department,
+    admission,
+    discharge,
+    surgery,
+    summaryValues,
+  ]);
 
   return (
     <div className='mt-5'>
