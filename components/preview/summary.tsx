@@ -17,9 +17,11 @@ export const PreviewSummary: React.FC<Props> = ({ dischargeSummary }) => {
               <Tr>
                 <Td>Patient Allergic To</Td>
                 <Td>
-                  {dischargeSummary.patientAllergicTo.split('\n').map((val) => (
-                    <p>{val}</p>
-                  ))}
+                  {dischargeSummary.patientAllergicTo
+                    .split('\n')
+                    .map((val, idx) => (
+                      <p key={idx}>{val}</p>
+                    ))}
                 </Td>
               </Tr>
             )}
@@ -31,8 +33,8 @@ export const PreviewSummary: React.FC<Props> = ({ dischargeSummary }) => {
               <Tr>
                 <Td>Patient Allergic To</Td>
                 <Td>
-                  {dischargeSummary.department.split('\n').map((val) => (
-                    <p>{val}</p>
+                  {dischargeSummary.department.split('\n').map((val, idx) => (
+                    <p key={idx}>{val}</p>
                   ))}
                 </Td>
               </Tr>
@@ -97,9 +99,11 @@ export const PreviewSummary: React.FC<Props> = ({ dischargeSummary }) => {
                     {summaryValue.title.toUpperCase()}
                   </h2>
                   <p className='text-lg mt-2'>
-                    {summaryValue.content.split('\n').map((val: string) => (
-                      <p>{val.toUpperCase()}</p>
-                    ))}
+                    {summaryValue.content
+                      .split('\n')
+                      .map((val: string, idx: number) => (
+                        <p key={idx}>{val.toUpperCase()}</p>
+                      ))}
                   </p>
                 </div>
               )}

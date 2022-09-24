@@ -22,8 +22,8 @@ export const PreviewHeader: React.FC<Props> = ({ dischargeHeader }) => {
             fontWeight='medium'
             textAlign={dischargeHeader.image ? 'right' : 'left'}
           >
-            {dischargeHeader.text.split('\n').map((val) => (
-              <p>{val}</p>
+            {dischargeHeader.text.split('\n').map((val, idx) => (
+              <p key={idx}>{val}</p>
             ))}
           </Text>
         )}
