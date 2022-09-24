@@ -13,12 +13,12 @@ export interface BioData {
   MRDNumber?: string;
 }
 
-interface DateTime {
-  date: string;
+export interface DateTime {
+  date?: string;
   time?: string;
 }
 
-interface DischargeSummaryValues {
+export interface DischargeSummaryValues {
   title: string;
   content: string;
 }
@@ -30,7 +30,7 @@ export interface DischargeSummary {
   admission?: DateTime;
   discharge?: DateTime;
   surgery?: DateTime;
-  summaryValues?: DischargeSummaryValues[];
+  summaryValues?: any;
 }
 
 export interface Discharge {
