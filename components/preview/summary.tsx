@@ -89,19 +89,22 @@ export const PreviewSummary: React.FC<Props> = ({ dischargeSummary }) => {
       )}
       <div>
         {Object.entries(dischargeSummary.summaryValues).map(
-          ([key, summaryValue]: [string, any]) =>
-            summaryValue.content && (
-              <div key={key} className='mt-3'>
-                <h2 className='text-lg font-medium'>
-                  {summaryValue.title.toUpperCase()}
-                </h2>
-                <p className='text-lg mt-2'>
-                  {summaryValue.content.split('\n').map((val: string) => (
-                    <p>{val.toUpperCase()}</p>
-                  ))}
-                </p>
-              </div>
-            )
+          ([key, summaryValue]: [string, any]) => (
+            <div key={key}>
+              {summaryValue.content && (
+                <div className='mt-3'>
+                  <h2 className='text-lg font-medium'>
+                    {summaryValue.title.toUpperCase()}
+                  </h2>
+                  <p className='text-lg mt-2'>
+                    {summaryValue.content.split('\n').map((val: string) => (
+                      <p>{val.toUpperCase()}</p>
+                    ))}
+                  </p>
+                </div>
+              )}
+            </div>
+          )
         )}
       </div>
     </div>
