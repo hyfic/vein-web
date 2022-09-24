@@ -2,6 +2,7 @@ import { Discharge } from '@/types/discharge';
 import { SetState } from '@/types/react';
 import { defaultDischargeData } from '@/utils/constants';
 import React, { createContext, useState } from 'react';
+import { BioData } from './bioData';
 import { DischargeHeader } from './dischargeHeader';
 
 export interface DischargeFromContextType {
@@ -19,6 +20,7 @@ export const DischargeForm: React.FC = () => {
   return (
     <DischargeFormContext.Provider value={{ dischargeData, setDischargeData }}>
       <DischargeHeader />
+      <BioData />
     </DischargeFormContext.Provider>
   );
 };

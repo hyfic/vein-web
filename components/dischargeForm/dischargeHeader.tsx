@@ -26,7 +26,7 @@ export const DischargeHeader: React.FC = () => {
 
   return (
     <div className='mt-5'>
-      <h1 className='text-2xl font-semibold'>Page header</h1>
+      <h1 className='text-xl font-semibold'>Page header</h1>
       <SimpleGrid mt={3} columns={{ sm: 1, md: 2 }} gap={3} className='h-fit'>
         <div onClick={() => fileInputRef.current.click()}>
           {!image ? (
@@ -79,6 +79,7 @@ export const DischargeHeader: React.FC = () => {
             onChange={(e) => setText(e.target.value)}
             variant='filled'
             placeholder='details'
+            size='lg'
           />
         </div>
       </SimpleGrid>
