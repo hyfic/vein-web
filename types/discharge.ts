@@ -1,10 +1,5 @@
 // discharge types
 
-export interface DischargeHeader {
-  image?: string;
-  text?: string;
-}
-
 export interface BioData {
   name?: string;
   age?: string;
@@ -34,7 +29,6 @@ export interface DischargeSummary {
 }
 
 export interface Discharge {
-  header?: DischargeHeader;
   bioData?: BioData;
   dischargeSummary?: DischargeSummary;
 }
