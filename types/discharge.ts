@@ -16,6 +16,7 @@ export interface DateTime {
 export interface DischargeSummaryValues {
   title: string;
   content: string;
+  isList: boolean;
 }
 
 export interface DischargeSummary {
