@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SetState } from '@/types/react';
 import { DischargeSummaryValues } from '@/types/discharge';
 import { DischargeSummaryValue } from './dischargeSummaryValue';
@@ -17,13 +17,15 @@ export const DischargeSummaryValueForm: React.FC<Props> = ({
   const editDischargeSummaryValue = (
     key: string,
     title: string,
-    content: string
+    content: string,
+    isList: boolean
   ) => {
     setSummaryValues({
       ...summaryValues,
       [key]: {
         title,
         content,
+        isList,
       },
     });
   };
@@ -34,7 +36,7 @@ export const DischargeSummaryValueForm: React.FC<Props> = ({
     setSummaryValues({ ...filteredSummaryValues });
   };
 
-  const addDischargeSummaryValue = () => {
+  const addDischargeSummaryValue = (isList: boolean) => {
     let key = Date.now().toString();
 
     setSummaryValues({
@@ -42,6 +44,7 @@ export const DischargeSummaryValueForm: React.FC<Props> = ({
       [key]: {
         title: 'Untitled',
         content: '',
+        isList,
       },
     });
   };
@@ -57,8 +60,20 @@ export const DischargeSummaryValueForm: React.FC<Props> = ({
           removeDischargeSummaryValue={removeDischargeSummaryValue}
         />
       ))}
-      <Button size='lg' variant='outline' onClick={addDischargeSummaryValue}>
-        Add field <FiPlus className='ml-2' size={20} />
+      <Button
+        size='lg'
+        variant='outline'
+        onClick={() => addDischargeSummaryValue(true)}
+      >
+        Add list field <FiPlus className='ml-2' size={20} />
+      </Button>
+      <Button
+        size='lg'
+        variant='outline'
+        onClick={() => addDischargeSummaryValue(false)}
+        ml={2}
+      >
+        Add text field <FiPlus className='ml-2' size={20} />
       </Button>
     </div>
   );
