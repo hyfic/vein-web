@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DischargeSummaryValues } from '@/types/discharge';
 import { Flex, IconButton, Input, Textarea } from '@chakra-ui/react';
 import { FiTrash2 } from 'react-icons/fi';
+import { TodoForm } from '../common/todo';
 
 interface Props {
   hashkey: string;
@@ -20,7 +21,7 @@ export const DischargeSummaryValue: React.FC<Props> = ({
   const [content, setContent] = useState(summaryValue.content);
 
   useEffect(() => {
-    editDischargeSummaryValue(key, title, content);
+    editDischargeSummaryValue(key, title, content, summaryValue.isList);
   }, [title, content]);
 
   return (
@@ -43,14 +44,18 @@ export const DischargeSummaryValue: React.FC<Props> = ({
           onClick={() => removeDischargeSummaryValue(key)}
         />
       </Flex>
-      <Textarea
-        size='lg'
-        variant='filled'
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder='Content'
-        className='mt-3'
-      />
+      {summaryValue.isList ? (
+        <TodoForm title={title} value={content} setValue={setContent} />
+      ) : (
+        <Textarea
+          size='lg'
+          variant='filled'
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder='Content'
+          className='mt-3'
+        />
+      )}
     </div>
   );
 };

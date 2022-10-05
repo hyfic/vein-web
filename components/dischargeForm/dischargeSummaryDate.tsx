@@ -1,11 +1,10 @@
 import React from 'react';
-import { DateTime } from '@/types/discharge';
 import { SetState } from '@/types/react';
 import { Input, Td, Tr } from '@chakra-ui/react';
 
 interface Props {
-  date: DateTime;
-  setDate: SetState<DateTime>;
+  date: string;
+  setDate: SetState<string>;
   title: string;
 }
 
@@ -16,33 +15,14 @@ export const DischargeSummaryDate: React.FC<Props> = ({
 }) => {
   return (
     <Tr>
-      <Td>{title}</Td>
+      <Td fontSize='lg'>{title}</Td>
       <Td>
         <Input
           size='lg'
           type='date'
           variant='filled'
-          value={date.date}
-          onChange={(e) =>
-            setDate({
-              date: e.target.value,
-              time: date.time,
-            })
-          }
-        />
-      </Td>
-      <Td>
-        <Input
-          size='lg'
-          type='time'
-          variant='filled'
-          value={date.time}
-          onChange={(e) =>
-            setDate({
-              time: e.target.value,
-              date: date.date,
-            })
-          }
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
       </Td>
     </Tr>

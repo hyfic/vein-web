@@ -1,7 +1,6 @@
 import React from 'react';
 import { DischargeSummary } from '@/types/discharge';
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { displayTime } from '@/utils/time';
+import { ListItem, OrderedList, Table, Tbody, Td, Tr } from '@chakra-ui/react';
 
 interface Props {
   dischargeSummary: DischargeSummary;
@@ -15,7 +14,7 @@ export const PreviewSummary: React.FC<Props> = ({ dischargeSummary }) => {
           <Tbody>
             {dischargeSummary.patientAllergicTo && (
               <Tr>
-                <Td>Patient Allergic To</Td>
+                <Td>PATIENT ALLERGIC TO</Td>
                 <Td>
                   {dischargeSummary.patientAllergicTo
                     .split('\n')
@@ -31,7 +30,7 @@ export const PreviewSummary: React.FC<Props> = ({ dischargeSummary }) => {
             </Tr>
             {dischargeSummary.department && (
               <Tr>
-                <Td>Patient Allergic To</Td>
+                <Td>DEPARTMENT</Td>
                 <Td>
                   {dischargeSummary.department.split('\n').map((val, idx) => (
                     <p key={idx}>{val}</p>
@@ -42,69 +41,33 @@ export const PreviewSummary: React.FC<Props> = ({ dischargeSummary }) => {
           </Tbody>
         </Table>
       </div>
-      {(dischargeSummary.admission?.date ||
-        dischargeSummary.discharge?.date ||
-        dischargeSummary.surgery?.date) && (
-        <div className='mt-3 border'>
-          <Table fontSize='lg' variant='simple'>
-            <Thead>
-              <Tr>
-                <Th>Date of</Th>
-                <Th>Date</Th>
-                <Th>Time</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {dischargeSummary.admission?.date && (
-                <Tr>
-                  <Td>Date of Admission</Td>
-                  <Td>{dischargeSummary.admission.date}</Td>
-                  {dischargeSummary.admission.time && (
-                    <Td>{displayTime(dischargeSummary.admission.time)}</Td>
-                  )}
-                  {!dischargeSummary.admission.time && <Td>-</Td>}
-                </Tr>
-              )}
-              {dischargeSummary.discharge?.date && (
-                <Tr>
-                  <Td>Date of Discharge</Td>
-                  <Td>{dischargeSummary.discharge.date}</Td>
-                  {dischargeSummary.discharge.time && (
-                    <Td>{displayTime(dischargeSummary.discharge.time)}</Td>
-                  )}
-                  {!dischargeSummary.discharge.time && <Td>-</Td>}
-                </Tr>
-              )}
-              {dischargeSummary.surgery?.date && (
-                <Tr>
-                  <Td>Date of Surgery (if any) (Delivery)</Td>
-                  <Td>{dischargeSummary.surgery.date}</Td>
-                  {dischargeSummary.surgery.time && (
-                    <Td>{displayTime(dischargeSummary.surgery.time)}</Td>
-                  )}
-                  {!dischargeSummary.surgery.time && <Td>-</Td>}
-                </Tr>
-              )}
-            </Tbody>
-          </Table>
-        </div>
-      )}
       <div>
         {Object.entries(dischargeSummary.summaryValues).map(
           ([key, summaryValue]: [string, any]) => (
             <div key={key}>
               {summaryValue.content && (
                 <div className='mt-3'>
-                  <h2 className='text-lg font-medium'>
+                  <h2 className='text-lg font-medium underline underline-offset-2'>
                     {summaryValue.title.toUpperCase()}
                   </h2>
-                  <p className='text-lg mt-2'>
-                    {summaryValue.content
-                      .split('\n')
-                      .map((val: string, idx: number) => (
-                        <p key={idx}>{val.toUpperCase()}</p>
-                      ))}
-                  </p>
+                  {summaryValue.isList && (
+                    <OrderedList fontSize='xl'>
+                      {JSON.parse(summaryValue.content).map(
+                        (val: string, idx: number) => (
+                          <ListItem key={idx}>{val.toUpperCase()}</ListItem>
+                        )
+                      )}
+                    </OrderedList>
+                  )}
+                  {!summaryValue.isList && (
+                    <p className='text-lg mt-2'>
+                      {summaryValue.content
+                        .split('\n')
+                        .map((val: string, idx: number) => (
+                          <p key={idx}>{val.toUpperCase()}</p>
+                        ))}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
