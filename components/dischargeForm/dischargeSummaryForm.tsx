@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { DateTime } from '@/types/discharge';
 import { DischargeSummaryDate } from './dischargeSummaryDate';
 import { DischargeFormContext, DischargeFromContextType } from '.';
 import {
@@ -25,9 +24,9 @@ export const DischargeSummaryForm: React.FC = () => {
   const [patientAllergicTo, setPatientAllergicTo] = useState('');
   const [mlc, setMlc] = useState('Yes');
   const [department, setDepartment] = useState('');
-  const [admission, setAdmission] = useState<DateTime>({});
-  const [discharge, setDischarge] = useState<DateTime>({});
-  const [surgery, setSurgery] = useState<DateTime>({});
+  const [admission, setAdmission] = useState<string>('');
+  const [discharge, setDischarge] = useState<string>('');
+  const [surgery, setSurgery] = useState<string>('');
   const [summaryValues, setSummaryValues] = useState<any>(
     dischargeData.dischargeSummary?.summaryValues || {}
   );
@@ -89,7 +88,6 @@ export const DischargeSummaryForm: React.FC = () => {
             <Tr>
               <Th></Th>
               <Th>DATE</Th>
-              <Th>TIME</Th>
             </Tr>
           </Thead>
           <Tbody>

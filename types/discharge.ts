@@ -23,9 +23,9 @@ export interface DischargeSummary {
   patientAllergicTo?: string;
   mlc?: 'Yes' | 'No';
   department?: string;
-  admission?: DateTime;
-  discharge?: DateTime;
-  surgery?: DateTime;
+  admission?: string;
+  discharge?: string;
+  surgery?: string;
   summaryValues?: any;
 }
 

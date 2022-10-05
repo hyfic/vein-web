@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react';
 import { BsPrinter } from 'react-icons/bs';
 import { PreviewHeader } from './header';
-import { PreviewBioData } from './bioData';
 import { PreviewSummary } from './summary';
 import { useReactToPrint } from 'react-to-print';
 
@@ -57,7 +56,7 @@ export const Preview: React.FC<Props> = ({ dischargeData }) => {
               margin-bottom: 0;
           }
           body {
-              padding-top: 72px;
+              padding-top: 10px;
               padding-bottom: 72px;
           }
           @page { 
@@ -103,9 +102,11 @@ export const Preview: React.FC<Props> = ({ dischargeData }) => {
               className='min-w-[1000px] max-w-[1000px] mt-10 bg-white text-black px-10 py-3'
               ref={printContentRef}
             >
-              <PreviewHeader />
               {dischargeData.bioData && (
-                <PreviewBioData dischargeBioData={dischargeData.bioData} />
+                <PreviewHeader
+                  bioData={dischargeData.bioData}
+                  dischargeSummary={dischargeData.dischargeSummary || {}}
+                />
               )}
               <h2 className='font-medium text-xl my-5 underline underline-offset-4'>
                 DISCHARGE SUMMARY
