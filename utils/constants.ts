@@ -4,40 +4,42 @@ export const defaultDischargeData = {
       '1': {
         title: 'Diagnosis',
         content: '',
+        isList: true,
       },
       '2': {
         title: 'History & examination',
         content: '',
+        isList: false,
       },
 
       '3': {
         title: 'Laboratory reports',
         content: '',
+        isList: false,
       },
 
       '4': {
-        title: 'Laboratory reports',
+        title: 'Course in the hospital',
         content: '',
+        isList: false,
       },
 
       '5': {
-        title: 'Course in the hospital',
+        title: 'Advice on Discharge',
         content: '',
+        isList: true,
       },
 
       '6': {
-        title: 'Advice on Discharge',
+        title: 'Review on',
         content: '',
+        isList: false,
       },
 
       '7': {
-        title: 'Review on',
-        content: '',
-      },
-
-      '8': {
         title: 'Lab tests to do on review',
         content: '',
+        isList: false,
       },
     },
   },
