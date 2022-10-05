@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { DateTime, DischargeSummaryValues } from '@/types/discharge';
+import { DateTime } from '@/types/discharge';
 import { DischargeSummaryDate } from './dischargeSummaryDate';
 import { DischargeFormContext, DischargeFromContextType } from '.';
 import {
